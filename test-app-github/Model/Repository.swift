@@ -8,14 +8,15 @@
 
 import Foundation
 
-class Repository {
+class Repository: Codable {
     var name: String
-    var stars: Int
-    var url: String
+    var html_url: URL
+    //var stars: Int
     
-    init(name: String, stars: Int, url: String){
+    init(name: String, html_url: String) {
         self.name = name
-        self.stars = stars
-        self.url = url
+        let urlString = html_url
+        self.html_url = URL(string: urlString)!
+        //self.stars = dictionary["watchers_count"] as! Int
     }
 }

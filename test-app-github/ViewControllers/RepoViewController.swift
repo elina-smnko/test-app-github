@@ -15,7 +15,7 @@ class RepoTableViewCell: UITableViewCell {
      var repo: Repository? {
         didSet {
             self.nameLabel.text = repo?.name
-            self.starsLabel.text = "\(repo?.stars ?? 0)" 
+           // self.starsLabel.text = "\(repo?.stars ?? 0)" 
         }
     }
 }
@@ -25,6 +25,8 @@ class RepoViewController: UITableViewController {
     var resultsController = UITableViewController()
     let searchController = UISearchController(searchResultsController: nil)
     var filteredRepos: [Repository]!
+    
+    var store = RepoStorage.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,13 +40,19 @@ class RepoViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
+        
+        store.getRepositoriesFromAPI() {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
             return self.filteredRepos.count
         } else {
-            return RepoStorage.repos.count
+            return store.repositories.count
         }
     }
 
@@ -53,9 +61,22 @@ class RepoViewController: UITableViewController {
         if isFiltering() {
             cell.repo = self.filteredRepos[indexPath.row]
         } else {
-            cell.repo = RepoStorage.repos[indexPath.row]
+            cell.repo = store.repositories[indexPath.row]
+        }
+        if UserDefaults.standard.bool(forKey: cell.repo!.name) {
+            cell.accessoryType = .checkmark
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let repo = store.repositories[indexPath.row]
+        if let cell = tableView.cellForRow(at: indexPath) {
+            cell.accessoryType = .checkmark
+        }
+        
+        UserDefaults.standard.set(true, forKey: repo.name)
+        UIApplication.shared.open(repo.html_url)
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -97,7 +118,7 @@ extension RepoViewController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
-        self.filteredRepos = RepoStorage.repos.filter { (repo: Repository) -> Bool in
+        self.filteredRepos = store.repositories.filter { (repo: Repository) -> Bool in
             guard let text = searchBar.text?.lowercased() else { return false }
             return repo.name.lowercased().contains(text)
         }

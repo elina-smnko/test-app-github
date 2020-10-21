@@ -9,5 +9,16 @@
 import Foundation
 
 class RepoStorage {
-    static var repos = [Repository(name: "one", stars: 5), Repository(name: "two", stars: 4)]
+    static let shared = RepoStorage()
+    private init() {}
+    
+    var repositories = [Repository]()
+    func getRepositoriesFromAPI(with completion: @escaping () -> ()) {
+        Client.getRepositories { (data) in
+            for i in 0...data.count - 1 {
+                self.repositories.append(data[i])
+            }
+        }
+        completion()
+    }
 }
