@@ -64,10 +64,12 @@ class NameSearchViewController: UIViewController, UITableViewDelegate, UITableVi
 
 class NameSearchTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var starLabel: UILabel!
     
     var repo: Repository? {
         didSet {
             self.nameLabel.text = repo?.name
+            self.starLabel.text? = "★\(repo?.watchers_count ?? 0)"
         }
     }
 }

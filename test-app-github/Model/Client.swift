@@ -14,11 +14,11 @@ class Client {
         let urlString: String
         let isName: Bool
         if let name = name {
-            urlString = "https://api.github.com/search/repositories?q=\(name)+in:name&sort=stars&order=desc"
+            urlString = "https://api.github.com/search/repositories?q=\(name)+in:name&sort=stars&order=desc&per_page=30"
             isName = true
             print(urlString)
         } else {
-            urlString = "https://api.github.com/repositories?client_id=\(APIparts().clientID)&client_secret=\(APIparts().clientSecret)"
+            urlString = "https://api.github.com/repositories?client_id=\(APIparts().clientID)&client_secret=\(APIparts().clientSecret)page=3&per_page=10"
             isName = false
         }
         // URL object

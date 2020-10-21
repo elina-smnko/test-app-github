@@ -22,12 +22,12 @@ class RepoStorage {
                 for i in 0...data.count - 1 {
                     self.name_repositories.append(data[i])
                 }
-                print("finished")
                 completion(true)
             })
             
         } else {
             Client.getRepositories(name: nil, completion: { (data) in
+                self.all_repositories.removeAll()
                 for i in 0...data.count - 1 {
                     self.all_repositories.append(data[i])
                 }
