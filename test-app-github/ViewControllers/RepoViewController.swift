@@ -39,18 +39,19 @@ class RepoViewController: UITableViewController {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
         
-        store.getRepositoriesFromAPI(name: nil, completion: {
-            DispatchQueue.main.async {
+        store.getRepositoriesFromAPI(name: nil, completion: {res in
+            if res{
+                DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        })
+            }})
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
             return self.filteredRepos.count
         } else {
-            return store.repositories.count
+            return store.all_repositories.count
         }
     }
 
@@ -59,7 +60,7 @@ class RepoViewController: UITableViewController {
         if isFiltering() {
             cell.repo = self.filteredRepos[indexPath.row]
         } else {
-            cell.repo = store.repositories[indexPath.row]
+            cell.repo = store.all_repositories[indexPath.row]
         }
         if UserDefaults.standard.bool(forKey: cell.repo!.name) {
             cell.accessoryType = .checkmark
@@ -68,7 +69,7 @@ class RepoViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let repo = store.repositories[indexPath.row]
+        let repo = store.all_repositories[indexPath.row]
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.accessoryType = .checkmark
         }
@@ -116,7 +117,7 @@ extension RepoViewController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
-        self.filteredRepos = store.repositories.filter { (repo: Repository) -> Bool in
+        self.filteredRepos = store.all_repositories.filter { (repo: Repository) -> Bool in
             guard let text = searchBar.text?.lowercased() else { return false }
             return repo.name.lowercased().contains(text)
         }

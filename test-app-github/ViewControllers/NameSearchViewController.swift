@@ -19,15 +19,16 @@ class NameSearchViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return store.repositories.count
+        return store.name_repositories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NameCell", for: indexPath) as! NameSearchTableViewCell
-            cell.repo = store.repositories[indexPath.row]
+            cell.repo = store.name_repositories[indexPath.row]
         
         if UserDefaults.standard.bool(forKey: cell.repo!.name) {
             cell.accessoryType = .checkmark
@@ -36,7 +37,7 @@ class NameSearchViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let repo = store.repositories[indexPath.row]
+        let repo = store.name_repositories[indexPath.row]
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.accessoryType = .checkmark
         }
@@ -47,9 +48,12 @@ class NameSearchViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBAction func searchTapped(_ sender: Any) {
         guard let text = searchField.text else {return}
-        store.getRepositoriesFromAPI(name: text, completion: {
-            DispatchQueue.main.async {
+        store.getRepositoriesFromAPI(name: text, completion: { res in
+            if res{
+                DispatchQueue.main.async {
                 self.tableView.reloadData()
+                    print("finished reloading")
+            }
             }
         })
     }
