@@ -91,10 +91,10 @@
 		C304407C253F6AFC00FECB12 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C3C419692540C37E00699B93 /* DictionaryOfRepos.swift */,
 				C3C4195A25405E9D00699B93 /* Repository.swift */,
 				C3C4195C25405EBC00699B93 /* RepoStorage.swift */,
 				C3C4195E25407E8800699B93 /* Client.swift */,
-				C3C419692540C37E00699B93 /* DictionaryOfRepos.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
