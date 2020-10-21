@@ -17,6 +17,7 @@
 		C3C4195D25405EBC00699B93 /* RepoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C4195C25405EBC00699B93 /* RepoStorage.swift */; };
 		C3C4195F25407E8800699B93 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C4195E25407E8800699B93 /* Client.swift */; };
 		C3C419622540802400699B93 /* APIparts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C419612540802400699B93 /* APIparts.swift */; };
+		C3C419662540AF4100699B93 /* NameSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C419652540AF4100699B93 /* NameSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C3C4195C25405EBC00699B93 /* RepoStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoStorage.swift; sourceTree = "<group>"; };
 		C3C4195E25407E8800699B93 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		C3C419612540802400699B93 /* APIparts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIparts.swift; sourceTree = "<group>"; };
+		C3C419652540AF4100699B93 /* NameSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				C304407F253F719600FECB12 /* RepoViewController.swift */,
+				C3C419652540AF4100699B93 /* NameSearchViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				C3C4195D25405EBC00699B93 /* RepoStorage.swift in Sources */,
 				C3C4195B25405E9D00699B93 /* Repository.swift in Sources */,
 				C3C419622540802400699B93 /* APIparts.swift in Sources */,
+				C3C419662540AF4100699B93 /* NameSearchViewController.swift in Sources */,
 				C3044068253F6A4C00FECB12 /* AppDelegate.swift in Sources */,
 				C304406A253F6A4C00FECB12 /* SceneDelegate.swift in Sources */,
 			);

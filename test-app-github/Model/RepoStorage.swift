@@ -13,12 +13,12 @@ class RepoStorage {
     private init() {}
     
     var repositories = [Repository]()
-    func getRepositoriesFromAPI(with completion: @escaping () -> ()) {
-        Client.getRepositories { (data) in
+    func getRepositoriesFromAPI(name: String?, completion: @escaping () -> ()) {
+        Client.getRepositories(name: name, completion: { (data) in
             for i in 0...data.count - 1 {
                 self.repositories.append(data[i])
             }
-        }
+        })
         completion()
     }
 }

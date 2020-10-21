@@ -10,10 +10,13 @@ import Foundation
 
 class Client {
     
-    class func getRepositories(completion: @escaping ([Repository]) -> ()) {
-        let urlString = "https://api.github.com/repositories?client_id=\(APIparts().clientID)&client_secret=\(APIparts().clientSecret)"
-        
-//        let urlString = "https://api.github.com/search/repositories?q=name:\(key)+in:name&sort=stars&order=desc"
+    class func getRepositories(name: String?, completion: @escaping ([Repository]) -> ()) {
+        let urlString: String
+        if let name = name {
+            urlString = "https://api.github.com/search/repositories?q=name:\(name)+in:name&sort=stars&order=desc"
+        } else {
+            urlString = "https://api.github.com/repositories?client_id=\(APIparts().clientID)&client_secret=\(APIparts().clientSecret)"
+        }
         // URL object
         let url = URL(string: urlString)
         

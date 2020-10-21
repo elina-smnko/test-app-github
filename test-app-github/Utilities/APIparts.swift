@@ -11,4 +11,8 @@ import Foundation
 struct APIparts {
     let clientID = "3ddef67466e95e87ba68"
     let clientSecret = "0f74a286ec5b2102338cecb15c686dcdd83f5995"
+    
+    enum search {
+        case all, name
+    }
 }

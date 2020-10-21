@@ -10,12 +10,10 @@ import UIKit
 
 class RepoTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var starsLabel: UILabel!
     
      var repo: Repository? {
         didSet {
             self.nameLabel.text = repo?.name
-           // self.starsLabel.text = "\(repo?.stars ?? 0)" 
         }
     }
 }
@@ -41,11 +39,11 @@ class RepoViewController: UITableViewController {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
         
-        store.getRepositoriesFromAPI() {
+        store.getRepositoriesFromAPI(name: nil, completion: {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        }
+        })
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
