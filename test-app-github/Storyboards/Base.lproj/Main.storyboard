@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5Ja-HP-rl5">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Gd9-Nr-VXu">
+            <objects>
+                <navigationController id="5Ja-HP-rl5" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sPp-xO-uMD">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rVe-t3-Kd7" kind="relationship" relationship="rootViewController" id="gt4-Pw-T6C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dyu-Cx-sbY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1830" y="34"/>
+        </scene>
+        <!--GitHub-->
+        <scene sceneID="TXA-d3-Xxw">
+            <objects>
+                <tableViewController id="rVe-t3-Kd7" customClass="RepoViewController" customModule="test_app_github" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="30" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5TH-vn-gEn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RepoCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepoCell" rowHeight="66" id="NkH-g1-c8e" customClass="RepoTableViewCell" customModule="test_app_github" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="66"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NkH-g1-c8e" id="X6z-ig-wXu">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpk-cX-War">
+                                            <rect key="frame" x="20" y="11" width="250" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="250" id="bSD-Ui-PnF"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ng9-JR-O78">
+                                            <rect key="frame" x="270" y="11" width="124" height="44"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ng9-JR-O78" secondAttribute="trailing" id="58r-t5-3WO"/>
+                                        <constraint firstItem="Dpk-cX-War" firstAttribute="top" secondItem="X6z-ig-wXu" secondAttribute="topMargin" id="86A-bV-8lm"/>
+                                        <constraint firstItem="Ng9-JR-O78" firstAttribute="leading" secondItem="Dpk-cX-War" secondAttribute="trailing" id="DQQ-jx-cfV"/>
+                                        <constraint firstItem="Ng9-JR-O78" firstAttribute="top" secondItem="X6z-ig-wXu" secondAttribute="topMargin" id="GOS-2I-FQC"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Dpk-cX-War" secondAttribute="bottom" id="RJZ-nK-pMy"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Ng9-JR-O78" secondAttribute="bottom" id="kXs-BO-iCo"/>
+                                        <constraint firstItem="Dpk-cX-War" firstAttribute="leading" secondItem="X6z-ig-wXu" secondAttribute="leadingMargin" id="rX0-27-GwK"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="Dpk-cX-War" id="9pv-0o-TCd"/>
+                                    <outlet property="starsLabel" destination="Ng9-JR-O78" id="aMw-Zj-YU7"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rVe-t3-Kd7" id="0C8-SI-iXh"/>
+                            <outlet property="delegate" destination="rVe-t3-Kd7" id="4bw-SF-vOp"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="GitHub" id="5L9-tl-ENu"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ITq-rM-LPn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-836" y="33"/>
+        </scene>
+    </scenes>
+</document>
