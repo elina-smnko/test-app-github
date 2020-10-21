@@ -12,10 +12,14 @@ class Client {
     
     class func getRepositories(name: String?, completion: @escaping ([Repository]) -> ()) {
         let urlString: String
+        let isName: Bool
         if let name = name {
-            urlString = "https://api.github.com/search/repositories?q=name:\(name)+in:name&sort=stars&order=desc"
+            urlString = "https://api.github.com/search/repositories?q=\(name)+in:name&sort=stars&order=desc"
+            isName = true
+            print(urlString)
         } else {
             urlString = "https://api.github.com/repositories?client_id=\(APIparts().clientID)&client_secret=\(APIparts().clientSecret)"
+            isName = false
         }
         // URL object
         let url = URL(string: urlString)
@@ -34,10 +38,12 @@ class Client {
                 
                 if let data = data {
                     do {
-                        let result = try JSONDecoder().decode([Repository].self, from: data)
+                        let result: [Repository]
+                        if isName {let dict = try JSONDecoder().decode(DictionaryOfRepos.self, from: data); result = dict.items}
+                        else{result = try JSONDecoder().decode([Repository].self, from: data) }
                         completion(result)
                     } catch {
-                        print("Something didn't work")
+                        print(error.localizedDescription)
                     }
                 }
             }

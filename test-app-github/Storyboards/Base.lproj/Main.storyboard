@@ -125,6 +125,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x7f-Mh-EcU">
                                 <rect key="frame" x="320" y="98" width="94" height="30"/>
                                 <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchTapped:" destination="m39-VZ-pwe" eventType="touchUpInside" id="471-cB-Pc4"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repository name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iop-yD-IMV">
                                 <rect key="frame" x="20" y="98" width="300" height="34"/>
@@ -138,7 +141,7 @@
                                 <rect key="frame" x="0.0" y="152" width="414" height="710"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="63" id="1DX-J0-z9o">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="NameCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameCell" rowHeight="63" id="1DX-J0-z9o" customClass="NameSearchTableViewCell" customModule="test_app_github" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1DX-J0-z9o" id="RtN-AK-gs1">
@@ -159,6 +162,9 @@
                                                 <constraint firstItem="mSL-Y9-Szw" firstAttribute="leading" secondItem="RtN-AK-gs1" secondAttribute="leadingMargin" id="u9q-cF-l0n"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="mSL-Y9-Szw" id="4EH-Qa-mV8"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -178,6 +184,10 @@
                         <viewLayoutGuide key="safeArea" id="Laa-yV-Tx2"/>
                     </view>
                     <navigationItem key="navigationItem" title="GitHub" id="Jm8-TV-UH9"/>
+                    <connections>
+                        <outlet property="searchField" destination="Iop-yD-IMV" id="JnX-s3-Caf"/>
+                        <outlet property="tableView" destination="jeY-lL-2Rw" id="679-Sf-NQi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uwr-Vl-2ao" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
