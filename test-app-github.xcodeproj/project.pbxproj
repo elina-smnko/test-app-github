@@ -16,9 +16,9 @@
 		C3C4195B25405E9D00699B93 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C4195A25405E9D00699B93 /* Repository.swift */; };
 		C3C4195D25405EBC00699B93 /* RepoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C4195C25405EBC00699B93 /* RepoStorage.swift */; };
 		C3C4195F25407E8800699B93 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C4195E25407E8800699B93 /* Client.swift */; };
-		C3C419622540802400699B93 /* APIparts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C419612540802400699B93 /* APIparts.swift */; };
 		C3C419662540AF4100699B93 /* NameSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C419652540AF4100699B93 /* NameSearchViewController.swift */; };
 		C3C4196A2540C37E00699B93 /* DictionaryOfRepos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C419692540C37E00699B93 /* DictionaryOfRepos.swift */; };
+		C3EDD7F8254210B700C6331D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EDD7F7254210B700C6331D /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,9 +33,9 @@
 		C3C4195A25405E9D00699B93 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		C3C4195C25405EBC00699B93 /* RepoStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoStorage.swift; sourceTree = "<group>"; };
 		C3C4195E25407E8800699B93 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		C3C419612540802400699B93 /* APIparts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIparts.swift; sourceTree = "<group>"; };
 		C3C419652540AF4100699B93 /* NameSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSearchViewController.swift; sourceTree = "<group>"; };
 		C3C419692540C37E00699B93 /* DictionaryOfRepos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryOfRepos.swift; sourceTree = "<group>"; };
+		C3EDD7F7254210B700C6331D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +68,7 @@
 		C3044066253F6A4C00FECB12 /* test-app-github */ = {
 			isa = PBXGroup;
 			children = (
-				C3C419602540801400699B93 /* Utilities */,
+				C3EDD7F6254210A100C6331D /* View */,
 				C304407E253F6B1000FECB12 /* Delegates */,
 				C304407D253F6B0300FECB12 /* ViewControllers */,
 				C304407C253F6AFC00FECB12 /* Model */,
@@ -117,12 +117,12 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
-		C3C419602540801400699B93 /* Utilities */ = {
+		C3EDD7F6254210A100C6331D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C3C419612540802400699B93 /* APIparts.swift */,
+				C3EDD7F7254210B700C6331D /* CustomButton.swift */,
 			);
-			path = Utilities;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,10 +198,10 @@
 			files = (
 				C3044080253F719600FECB12 /* RepoViewController.swift in Sources */,
 				C3C4195F25407E8800699B93 /* Client.swift in Sources */,
+				C3EDD7F8254210B700C6331D /* CustomButton.swift in Sources */,
 				C3C4195D25405EBC00699B93 /* RepoStorage.swift in Sources */,
 				C3C4196A2540C37E00699B93 /* DictionaryOfRepos.swift in Sources */,
 				C3C4195B25405E9D00699B93 /* Repository.swift in Sources */,
-				C3C419622540802400699B93 /* APIparts.swift in Sources */,
 				C3C419662540AF4100699B93 /* NameSearchViewController.swift in Sources */,
 				C3044068253F6A4C00FECB12 /* AppDelegate.swift in Sources */,
 				C304406A253F6A4C00FECB12 /* SceneDelegate.swift in Sources */,

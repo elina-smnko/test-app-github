@@ -10,10 +10,12 @@ import UIKit
 
 class RepoTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
     
-     var repo: Repository? {
+    var repo: Repository? {
         didSet {
             self.nameLabel.text = repo?.name
+            self.idLabel.text? = "id: \(repo?.id ?? 0)"
         }
     }
 }
@@ -33,6 +35,8 @@ class RepoViewController: UITableViewController {
         self.tableView.tableFooterView = UIView(frame: .zero)
 
         prepareForSearch()
+        store.all_repositories.removeAll()
+        UserDefaults.standard.set(1, forKey: "all_last")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -43,8 +47,10 @@ class RepoViewController: UITableViewController {
             if res{
                 DispatchQueue.main.async {
                 self.tableView.reloadData()
+                }
             }
-            }})
+        })
+        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,20 +68,31 @@ class RepoViewController: UITableViewController {
         } else {
             cell.repo = store.all_repositories[indexPath.row]
         }
+        cell.accessoryType = .none
         if UserDefaults.standard.bool(forKey: cell.repo!.name) {
             cell.accessoryType = .checkmark
         }
+        if indexPath.row == store.all_repositories.count - 1 {
+            UserDefaults.standard.set(store.all_repositories[indexPath.row].id, forKey: "all_last")
+            store.getRepositoriesFromAPI(name: nil, completion: { res in
+                if res{
+                    DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    }
+                }
+            })
+        }
+    
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let repo = store.all_repositories[indexPath.row]
-        if let cell = tableView.cellForRow(at: indexPath) {
-            cell.accessoryType = .checkmark
-        }
-        
-        UserDefaults.standard.set(true, forKey: repo.name)
         UIApplication.shared.open(repo.html_url)
+        UserDefaults.standard.set(true, forKey: repo.name)
+        if let cell = tableView.cellForRow(at: indexPath) {
+                   cell.accessoryType = .checkmark
+               }
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -94,8 +111,6 @@ extension RepoViewController: UISearchResultsUpdating {
 
         self.resultsController.tableView.dataSource = self
         self.resultsController.tableView.delegate = self
-        
-        
     }
 
     func searchBarIsEmpty() -> Bool {
@@ -107,8 +122,8 @@ extension RepoViewController: UISearchResultsUpdating {
     }
 
     func numbersContainSubstringOf(_ part: String, source: [String]) -> Bool {
-        for el in source {
-            if el.contains(part) {
+        for element in source {
+            if element.contains(part) {
                 return true
             }
         }

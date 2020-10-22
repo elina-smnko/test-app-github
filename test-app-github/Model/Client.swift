@@ -13,29 +13,22 @@ class Client {
     class func getRepositories(name: String?, completion: @escaping ([Repository]) -> ()) {
         let urlString: String
         let isName: Bool
+        let namepage = UserDefaults.standard.integer(forKey: "namepage")
+        let all_last = UserDefaults.standard.integer(forKey: "all_last")
         if let name = name {
-            urlString = "https://api.github.com/search/repositories?q=\(name)+in:name&sort=stars&order=desc&per_page=30"
+            urlString = "https://api.github.com/search/repositories?q=\(name)+in:name&sort=stars&order=desc&page=\(namepage)&per_page=30"
             isName = true
-            print(urlString)
         } else {
-            urlString = "https://api.github.com/repositories?client_id=\(APIparts().clientID)&client_secret=\(APIparts().clientSecret)page=3&per_page=10"
+            urlString = "https://api.github.com/repositories?since=\(all_last)&per_page=30"
             isName = false
         }
-        // URL object
         let url = URL(string: urlString)
-        
-        // Start URL Session
         if let url = url {
-            let session = URLSession.shared
-            
-            // DataTask object
-            let task = session.dataTask(with: url) { (data, response, error) in
-                
+            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let error = error {
                  print(error.localizedDescription)
                  return
                 }
-                
                 if let data = data {
                     do {
                         let result: [Repository]
@@ -47,7 +40,6 @@ class Client {
                     }
                 }
             }
-            
             task.resume()
         }else {
             print("invalid url")
