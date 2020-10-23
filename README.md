@@ -1,5 +1,5 @@
 # test-app-github
-## Decription
+## Description
 This project is made to retrieve repositories from Github. 
 There are two main opportunities included: 
   1. Viewing the whole list (starting from the first GitHub repo).
