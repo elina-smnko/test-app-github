@@ -68,9 +68,10 @@
 		C3044066253F6A4C00FECB12 /* test-app-github */ = {
 			isa = PBXGroup;
 			children = (
+				C3AABBBB2542D1B700251207 /* Network */,
 				C3EDD7F6254210A100C6331D /* View */,
 				C304407E253F6B1000FECB12 /* Delegates */,
-				C304407D253F6B0300FECB12 /* ViewControllers */,
+				C304407D253F6B0300FECB12 /* ViewModel */,
 				C304407C253F6AFC00FECB12 /* Model */,
 				C304407B253F6AEB00FECB12 /* Storyboards */,
 				C3044070253F6A4E00FECB12 /* Assets.xcassets */,
@@ -94,18 +95,17 @@
 				C3C419692540C37E00699B93 /* DictionaryOfRepos.swift */,
 				C3C4195A25405E9D00699B93 /* Repository.swift */,
 				C3C4195C25405EBC00699B93 /* RepoStorage.swift */,
-				C3C4195E25407E8800699B93 /* Client.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		C304407D253F6B0300FECB12 /* ViewControllers */ = {
+		C304407D253F6B0300FECB12 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				C304407F253F719600FECB12 /* RepoViewController.swift */,
 				C3C419652540AF4100699B93 /* NameSearchViewController.swift */,
 			);
-			path = ViewControllers;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C304407E253F6B1000FECB12 /* Delegates */ = {
@@ -115,6 +115,14 @@
 				C3044067253F6A4C00FECB12 /* AppDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		C3AABBBB2542D1B700251207 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C3C4195E25407E8800699B93 /* Client.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		C3EDD7F6254210A100C6331D /* View */ = {
